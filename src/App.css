@@ -1,0 +1,79 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.cell_content {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid #000;
+  width: 3rem;
+  height: 3rem;
+  background-color: azure;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.turn {
+  display:flex;
+  gap: 15px;
+  
+}
+
+.turn > .cell_content {
+  cursor: default !important;
+}
+
+.cell_content.isSelected {
+  background-color: rgb(26, 107, 230);
+  color: #fff;
+}
+
+.winner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #00000080;
+}
+
+.winner h2 {
+  color: #000;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  
+}
+
+.winner article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
