@@ -4,6 +4,8 @@ import './App.css';
 import { TURNS } from './components/logic/consts';
 import { Cell } from './components/Cell';
 import { checkWinner, endGame } from './components/logic/board';
+import WinnerModal from './components/WinnerModal';
+import Board from './components/Board';
 
 //Array(9).fill(null)
 function App() {
@@ -36,38 +38,17 @@ function App() {
     setTurn(TURNS.X);
     setWinner(null);
   }
+
   return (
     <main className="board">
       <button onClick={resetGame}>Limpiar</button>
       <h1>Tic tac toe</h1>
-      <section className="game">
-        {board.map((cell, index) => {
-          return (
-            <Cell key={index} index={index} updateBoard={updateBoard}>
-              {cell}
-            </Cell>
-          );
-        })}
-      </section>
-
+      <Board board={board} updateBoard={updateBoard}/>
       <section className="turn">
         <Cell isSelected={turn === TURNS.X}>{TURNS.X}</Cell>
-        <Cell isSelected={turn === TURNS.O}>{TURNS.O}</Cell>
-        
+        <Cell isSelected={turn === TURNS.O}>{TURNS.O}</Cell>        
       </section>
-
-      {winner!==null && (
-        <section className='winner'>
-          <h2>
-            {winner===false ? 'Empate': 'Ganador'}
-          </h2>
-          <article className='modal-text'>
-            <Cell>{winner}</Cell>
-            <button onClick={resetGame}>Volver a jugar</button>
-          </article>
-
-        </section>
-      )}
+      <WinnerModal winner={winner} resetGame={resetGame}/>
     </main>
   );
 }
